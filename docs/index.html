@@ -122,6 +122,12 @@ table td.crossed
         }
         return 0;
     }
+  document.getElementById("total_exp").addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+          myFunc();
+      }
+    });
 </script>
 
 </body>
