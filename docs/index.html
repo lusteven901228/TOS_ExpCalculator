@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+table td.crossed
+{
+   background-image: linear-gradient(to bottom right,  transparent calc(50% - 1px), black, transparent calc(50% + 1px)); 
+}
+</style>
+</head>
+<body>
+
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">素材計算器</h2>
+    <p class="w3-xlarge">
+        <input type="number" id="total_exp" placeholder="0" name="total_exp" min="0"><br />
+        倍率:<select name="倍率" id="multiplier">
+            <option value="1" selected="selected">1x</option>
+            <option value="1.5">1.5x</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+        </select>
+        <button class="w3-xlarge" onclick="myFunc()">計算</button></p>
+    <p class="w3-wide">
+    <div style="display: flex; align-items: center; justify-content: center">
+        <table>
+            <tbody>
+                <tr class="w3-xlarge">
+                    <td>餵法</td>
+                    <td><img src="images/0426.jpg" alt="萬年靈魂石" width="50px" height="50px"></td>
+                    <td><img src="images/0280.jpg" alt="千年靈魂石" width="50px" height="50px"></td>
+                    <td><img src="images/0270.jpg" alt="小靈魂石" width="50px" height="50px"></td>
+                </tr>
+                <tr class="w3-xlarge">
+                    <td>1</td>
+                    <td id="1-1">0</td>
+                    <td id="1-2">0</td>
+                    <td id="1-3">0</td>
+                </tr>
+                <tr class="w3-xlarge">
+                    <td>2</td>
+                    <td id="2-1">0</td>
+                    <td id="2-2">0</td>
+                    <td class="crossed"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <p class="w3-xlarge">
+            <img src="images/0275.jpg" alt="靈魂石" width="50px" height="50px"> = <img src="images/0270.jpg" alt="小靈魂石" width="50px" height="50px"> x 2
+            <br />
+            <img src="images/2367.jpg" alt="時空元素" width="50px" height="50px"> = <img src="images/0280.jpg" alt="千年靈魂石" width="50px" height="50px"> x 4
+            <br />
+            <img src="images/2251.jpg" alt="雅緻甜點" width="50px" height="50px"> = <img src="images/0426.jpg" alt="萬年靈魂石" width="50px" height="50px"> x 2
+            <br />
+            <img src="images/1873.jpg" alt="珍饈美點" width="50px" height="50px"> = <img src="images/0426.jpg" alt="萬年靈魂石" width="50px" height="50px"> x 3
+            <br />
+            <img src="images/0744.jpg" alt="大肥" width="50px" height="50px"> = <img src="images/0426.jpg" alt="萬年靈魂石" width="50px" height="50px"> x 3 + <img src="images/0280.jpg" alt="千年靈魂石" width="50px" height="50px"> x 5
+            <br />
+            <img src="images/1631.jpg" alt="羊駝" width="50px" height="50px"> = <img src="images/0426.jpg" alt="萬年靈魂石" width="50px" height="50px"> x 8
+        </p>
+    </div>   
+  </div>
+</div>
+
+
+<script>
+    function myFunc(){
+        var mul = parseFloat(document.getElementById("multiplier").value);
+        var total_exp = parseInt(document.getElementById("total_exp").value);
+        var temp = Math.ceil(total_exp/1695/mul);
+        var temp2 = temp;
+        var dict = d = {0:0, 1:7, 2:4, 3:1, 4:8, 5:5, 6:2, 7:9, 8:6, 9:3};
+        var b = 0;
+        var c = 0;
+        c = dict[temp%10];
+        temp = Math.floor((temp-c*3)/10);
+        b = dict[temp%10];
+        temp = Math.floor((temp-b*3)/10);
+        if(temp<0){
+            document.getElementById("1-1").innerHTML = "0";
+            document.getElementById("1-2").innerHTML = Math.floor(temp2/30).toString();
+            document.getElementById("1-3").innerHTML = Math.ceil((temp2%30)/3).toString();
+        }else{
+            document.getElementById("1-1").innerHTML = temp.toString();
+            document.getElementById("1-2").innerHTML = b.toString();
+            document.getElementById("1-3").innerHTML = c.toString();
+        }
+        temp = Math.ceil(total_exp/16950/mul);
+        temp2 = temp;
+        b = dict[temp%10];
+        temp = Math.floor((temp-b*3)/10);
+        if(temp<0){
+            document.getElementById("2-1").innerHTML = "0";
+            document.getElementById("2-2").innerHTML = Math.floor(temp2/30).toString();
+        }else{
+            document.getElementById("2-1").innerHTML = temp.toString();
+            document.getElementById("2-2").innerHTML = b.toString();
+        }
+        return 0;
+    }
+</script>
+
+</body>
+</html>
