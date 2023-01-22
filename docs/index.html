@@ -90,10 +90,16 @@ table td.crossed
         var dict = d = {0:0, 1:7, 2:4, 3:1, 4:8, 5:5, 6:2, 7:9, 8:6, 9:3};
         var b = 0;
         var c = 0;
-        c = dict[temp%10];
-        temp = Math.floor((temp-c*3)/10);
-        b = dict[temp%10];
-        temp = Math.floor((temp-b*3)/10);
+        if(temp>=0){
+            c = dict[temp%10];
+            temp = Math.floor((temp-c*3)/10);
+        }else{
+            alert("經驗不能小於 0 !");
+        }
+        if(temp>=0){
+            b = dict[temp%10];
+            temp = Math.floor((temp-b*3)/10);
+        }
         if(temp<0){
             document.getElementById("1-1").innerHTML = "0";
             document.getElementById("1-2").innerHTML = Math.floor(temp2/30).toString();
